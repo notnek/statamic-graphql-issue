@@ -1,4 +1,3 @@
-title: Page
 tabs:
   main:
     display: Main
@@ -13,20 +12,6 @@ tabs:
               validate:
                 - required
           -
-            handle: author
-            field:
-              type: users
-              display: Author
-              default: current
-              localizable: true
-              max_items: 1
-          -
-            handle: template
-            field:
-              type: template
-              display: Template
-              localizable: true
-          -
             handle: blocks
             field:
               buttons:
@@ -39,8 +24,12 @@ tabs:
                 - removeformat
                 - quote
                 - anchor
-                - image
                 - table
+                - superscript
+                - alignleft
+                - aligncenter
+                - alignright
+                - alignjustify
               smart_typography: false
               save_html: false
               inline: false
@@ -50,30 +39,50 @@ tabs:
               allow_source: true
               enable_input_rules: true
               enable_paste_rules: true
-              remove_empty_nodes: false
+              remove_empty_nodes: trim
               antlers: false
               link_noopener: false
               link_noreferrer: false
               target_blank: false
+              container: assets
               sets:
                 main:
                   display: Main
                   instructions: null
                   icon: null
                   sets:
-                    other_sample:
-                      display: 'Other Sample'
+                    image:
+                      display: Image
                       instructions: null
-                      icon: null
+                      icon: media-image-picture-orientation
                       fields:
                         -
-                          handle: headline
+                          handle: image
                           field:
-                            input_type: text
-                            antlers: false
-                            type: text
-                            display: Headline
-                            icon: text
+                            max_files: 1
+                            mode: list
+                            container: assets
+                            restrict: false
+                            allow_uploads: true
+                            show_filename: true
+                            type: assets
+                            display: Image
+                            icon: assets
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            hide_display: false
+                    video:
+                      display: Video
+                      instructions: null
+                      icon: media-webcam-video
+                      fields:
+                        -
+                          handle: url
+                          field:
+                            type: video
+                            display: URL
+                            icon: video
                             listable: hidden
                             instructions_position: above
                             visibility: visible
@@ -95,12 +104,4 @@ tabs:
             field:
               type: slug
               localizable: true
-          -
-            handle: parent
-            field:
-              type: entries
-              collections:
-                - pages
-              max_items: 1
-              listable: false
-              localizable: true
+title: 'Blog Post'
